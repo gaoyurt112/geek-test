@@ -9,7 +9,7 @@ class UserStore {
 
   getUserInfo = async () => {
     const res = await http.get('/user/profile')
-    console.log(res)
+    // console.log(res)
     this.userInfo = res.data.data
   }
 }
