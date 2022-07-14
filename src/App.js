@@ -1,6 +1,6 @@
 import './App.css'
 //引入react路由组件
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 //引入页面组件
 import Login from './pages/Login'
 import GeekLayout from './pages/Layout'
@@ -10,10 +10,12 @@ import Publish from './pages/Publish'
 //导入路由鉴权组件
 import { AuthRoute } from './components/AuthRoute'
 
+//引入history工具
+import { history, HistoryRouter } from './utils/history'
 
 function App () {
   return (
-    <BrowserRouter>
+    <HistoryRouter history={history}>
       <div className="App">
         <Routes>
           <Route path='/' element={
@@ -29,7 +31,7 @@ function App () {
 
         </Routes>
       </div>
-    </BrowserRouter>
+    </HistoryRouter>
   )
 }
 

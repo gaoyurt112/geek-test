@@ -2,7 +2,7 @@
 import { http } from "@/utils/index"
 import { makeAutoObservable } from "mobx"
 //导入持久化token工具函数
-import { getToken, setToken } from '@/utils/index'
+import { getToken, setToken, removeToken } from '@/utils/index'
 
 class LoginStore {
   //设置token的初始值为本地token或空
@@ -24,6 +24,15 @@ class LoginStore {
     setToken(res.data.data.token)
     this.token = res.data.data.token
   }
+
+  //退出登录的方法
+  logout = () => {
+    //置空token
+    this.token = ''
+    //清除本地token
+    removeToken()
+  }
+
 
 }
 const loginstore = new LoginStore()

@@ -1,7 +1,8 @@
 //在这里封装axios实例
 //引入axios
 import axios from 'axios'
-import { getToken } from './token'
+import { getToken, removeToken } from './token'
+import { history } from './history'
 
 //创建axios实例
 const http = axios.create({
@@ -27,7 +28,14 @@ http.interceptors.response.use(response => {
   //对响应数据进行处理
   return response
 }, error => {
-  //对响应失败进行处理
+  // 对响应失败进行处理
+  // 如果错误状态为401
+  if (error.response.status === 401) {
+    //删除token
+    removeToken()
+    //跳转页面到登录页
+    history.push('/login')
+  }
   return Promise.reject(error)
 })
 
