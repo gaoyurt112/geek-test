@@ -48,7 +48,7 @@ const Publish = () => {
       return item
     })
 
-    console.log(fileList)
+    // console.log(fileList)
     setFilelist(filelist)
   }
 
